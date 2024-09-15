@@ -1,8 +1,7 @@
 const Funcionarios = require('../models/FuncionariosModel')
 
 exports.index = (req, res) => {
-    if (!req.session.user) return res.render('login')
-    return res.render('funcionarios');
+    res.render('funcionarios');
   };
 
   exports.registrar = (req,res) => {

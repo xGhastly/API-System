@@ -1,8 +1,7 @@
 const Login = require('../models/LoginModel')
 
 exports.index = (req, res) => {
-    if(req.session.user) return res.render('index')
-    return res.render('login')
+    res.render('login')
 }
 
 exports.login = async (req, res) => {

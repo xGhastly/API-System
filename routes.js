@@ -5,8 +5,10 @@ const loginController = require('./src/controllers/loginController');
 const registerController = require ('./src/controllers/registerController')
 const funcionariosController = require ('./src/controllers/funcionariosController')
 
+const { loginRequired } = require('./src/middlewares/middleware') 
+
 // Rotas da home
-route.get('/', homeController.index);
+route.get('/', loginRequired ,homeController.index);
 
 // Rotas de login
 route.get('/login', loginController.index);
@@ -18,8 +20,8 @@ route.get('/register', registerController.index);
 route.post('/register/send', registerController.register);
 
 // Rotas de Funcionarios
-route.get('/funcionarios', funcionariosController.index)
-route.get('/funcionarios/registrar', funcionariosController.registrar)
+route.get('/funcionarios', loginRequired, funcionariosController.index)
+route.get('/funcionarios/registrar', loginRequired, funcionariosController.registrar)
 route.post('/funcionarios/registrar/send', funcionariosController.send)
 
 

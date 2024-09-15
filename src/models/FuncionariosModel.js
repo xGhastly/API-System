@@ -3,9 +3,9 @@ const validator = require('validator')
 
 const FuncionariosSchema = new mongoose.Schema({
   nome: { type: String, required: true },
-  idade: { type: String, required: true },
+  idade: { type: Number, required: true },
   email: { type: String, required: true },
-  telefone: { type: String, required: true },
+  telefone: { type: Number, required: true },
   empresa: { type: String, required: true },
   cargo: { type: String, required: true }
 });
@@ -38,15 +38,17 @@ class Funcionarios {
 
   valida() {
     this.cleanUp();
-    if(this.body.nome.length <= 0) this.errors.push('Coloque um nome.')
-    if(this.body.idade.length <= 0) this.errors.push('Coloque uma idade.')
-    if(this.body.email.length <= 0) this.errors.push('Coloque um email.')
-    if(this.body.telefone.length <= 0) this.errors.push('Coloque um telefone.')
-    if(this.body.empresa.length <= 0) this.errors.push('Coloque uma empresa.')
-    if(this.body.cargo.length <= 0) this.errors.push('Coloque um cargo.')
-    if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
-    if(this.body.idade.length <= 0 || !this.body.idade == Number) this.errors.push('Você deve colocar sua idade em número');
-  }
+    this.formatData();
+
+    if (this.body.nome.length <= 0) this.errors.push('Coloque um nome.');
+    if (typeof this.body.idade !== 'number' || this.body.idade <= 0 || !Number.isInteger(this.body.idade)) 
+      this.errors.push('Idade deve ser um número inteiro positivo.');
+    if (this.body.email.length <= 0) this.errors.push('Coloque um email.');
+    if (!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido.');
+    if (this.body.telefone.length <= 0) this.errors.push('Coloque um telefone.');
+    if (this.body.empresa.length <= 0) this.errors.push('Coloque uma empresa.');
+    if (this.body.cargo.length <= 0) this.errors.push('Coloque um cargo.');
+}
 
   cleanUp() {
     for(const key in this.body) {
@@ -65,6 +67,18 @@ class Funcionarios {
       empresa: this.body.empresa,
       cargo: this.body.cargo,
     }
+  }
+
+  formatData() {
+    // Formata os dados para padrão
+    this.body.nome = this.body.nome.trim().toUpperCase();
+    this.body.email = this.body.email.trim().toLowerCase();
+    this.body.telefone = this.body.telefone.replace(/\s+/g, '');
+    this.body.empresa = this.body.empresa.trim().toUpperCase();
+    this.body.cargo = this.body.cargo.trim().toUpperCase();
+
+    // Assegura que a idade é um número
+    this.body.idade = parseInt(this.body.idade, 10);
   }
   
 }
