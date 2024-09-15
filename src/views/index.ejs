@@ -1,0 +1,102 @@
+<%- include('includes/head'); %>
+
+    <!-- Cabeçalho -->
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"><img src="img/LOGO-BARRA.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="veiculos.html">Veículos</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="funcionarios.html">Funcionários</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Estacionamento</a>
+              </li>
+          </ul>
+      </div>
+  </header>
+    <!-- Conteúdo Principal -->
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h1>Sistema Parking Novo Horizonte</h1>
+                <p>Bem-vindo ao sistema. Aqui você pode gerenciar veículos, funcionários e o estacionamento com eficiência.</p>
+            </div>
+        </div>
+
+        <!-- Cartões de Acesso Rápido -->
+        <div class="row text-center">
+            <!-- Cartão de Veículos -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <i class="fas fa-car fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Veículos</h5>
+                        <p class="card-text">Gerencie os veículos que acessam o estacionamento.</p>
+                        <a href="veiculos.html" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cartão de Funcionários -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Funcionários</h5>
+                        <p class="card-text">Visualize e gerencie os funcionários da empresa.</p>
+                        <a href="funcionarios.html" class="btn btn-success">Acessar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cartão de Estacionamento -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <i class="fas fa-parking fa-3x mb-3 text-warning"></i>
+                        <h5 class="card-title">Estacionamento</h5>
+                        <p class="card-text">Controle as vagas e o status do estacionamento.</p>
+                        <a href="#" class="btn btn-warning">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel de Resumo -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3>Resumo do Sistema</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="info-box bg-primary text-white p-3 mb-3">
+                            <i class="fas fa-car fa-2x"></i>
+                            <span class="ml-3">Total de Veículos: 120</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box bg-success text-white p-3 mb-3">
+                            <i class="fas fa-users fa-2x"></i>
+                            <span class="ml-3">Total de Funcionários: 45</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-box bg-warning text-white p-3 mb-3">
+                            <i class="fas fa-parking fa-2x"></i>
+                            <span class="ml-3">Vagas Disponíveis: 30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<%- include('includes/footer'); %>
