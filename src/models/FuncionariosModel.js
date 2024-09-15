@@ -3,9 +3,9 @@ const validator = require('validator')
 
 const FuncionariosSchema = new mongoose.Schema({
   nome: { type: String, required: true },
-  idade: { type: Number, required: true },
+  idade: { type: String, required: true },
   email: { type: String, required: true },
-  telefone: { type: Number, required: true },
+  telefone: { type: String, required: true },
   empresa: { type: String, required: true },
   cargo: { type: String, required: true }
 });
@@ -50,9 +50,11 @@ class Funcionarios {
 
   cleanUp() {
     for(const key in this.body) {
+      this.body.telfone = this.body.telefone.replace(/\s+/g, '')
       if(typeof this.body[key] !== 'string') {
         this.body[key] = '';
       }
+
     }
 
     this.body = {
