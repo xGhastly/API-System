@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator')
+const bcryptjs = require('bcryptjs')
 
 const RegisterSchema = new mongoose.Schema({
   user: { type: String, required: true },
@@ -9,6 +10,7 @@ const RegisterSchema = new mongoose.Schema({
 });
 
 const RegisterModel = mongoose.model('Register', RegisterSchema);
+
 
 class Register {
   constructor(body) {
@@ -20,12 +22,24 @@ class Register {
   async register() {
     this.valida()
     if(this.errors.length > 0) return;
-    try {
-      this.user = await RegisterModel.create(this.body)
-    } catch(e) {
-      console.log(e)
-    }
+
+    await this.userExists()
+
+    if(this.errors.length > 0) return;
+
+    const salt = bcryptjs.genSaltSync()
+    this.body.password = bcryptjs.hashSync(this.body.password, salt);
+
     
+    this.user = await RegisterModel.create(this.body)
+
+  }
+
+  async userExists() {
+    const email = await RegisterModel.findOne({ email: this.body.email })
+    const user = await RegisterModel.findOne({ user: this.body.user })
+    if (email) this.errors.push('Email já cadastrado.')
+    if(user) this.errors.push('Usuário já cadastrado.')
   }
 
   valida() {
@@ -54,3 +68,5 @@ class Register {
 }
 
 module.exports = Register;
+module.exports.RegisterModel = RegisterModel
+

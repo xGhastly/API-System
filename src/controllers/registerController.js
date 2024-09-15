@@ -1,12 +1,13 @@
 const Register = require('../models/RegisterModel')
 
 exports.index = (req, res) => {
-    res.render('register');
+    if(req.session.user) return res.render('index')
+    return res.render('register');
 };
 
 exports.register = async (req, res) => {
     try {   
-        const register = new Register(req.body)
+        const register = new Register(req.body);
         await register.register()
 
         if (register.errors.length > 0) {
@@ -16,9 +17,9 @@ exports.register = async (req, res) => {
         });
         return;
     }
-    req.flash('success', 'Seu usuário foi criado com sucesso.');
+    req.flash('success', 'Seu usuário foi criado com sucesso.', 'Você será redirecionado para a tela de Login');
     req.session.save(function () {
-        return res.redirect(req.get("Referrer") || "/register");
+        res.redirect(req.get("Referrer") || "/register");
 });
     } catch(e) {
         console.log(e)
