@@ -5,7 +5,9 @@ module.exports = {
   entry: {
     'main': './frontend/main.js',
     'login': './frontend/login.js',
-    'register': './frontend/register.js'
+    'register': './frontend/register.js',
+    'funcionarios': './frontend/funcionarios.js',
+    'reg-funcionario': './frontend/reg-funcionario.js'
   },
   output: {
     path: path.resolve(__dirname, 'public', 'assets', 'js'),

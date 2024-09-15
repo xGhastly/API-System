@@ -1,0 +1,33 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #023047;
+}
+
+.card {
+  border: none;
+  border-radius: 8px;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+  background-color: #023047;
+  border-color: #023047;
+}
+
+.btn-primary:hover {
+  background-color: #021e36;
+  border-color: #021e36;
+}
