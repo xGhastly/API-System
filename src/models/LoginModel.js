@@ -10,10 +10,10 @@ class Login {
     this.user = null
   }
   async login() {
-    this.user = await RegisterModel.findOne({ user: this.body.user })
+    this.user = await RegisterModel.findOne({ email: this.body.email })
 
     if(!this.user) { 
-      this.errors.push('Usuário não existe.')
+      this.errors.push('Email não cadastrado.')
       return;
     };
     if(!bcryptjs.compareSync(this.body.password, this.user.password)){
@@ -32,7 +32,7 @@ class Login {
     }
 
     this.body = {
-      user: this.body.user,
+      email: this.body.email,
       password: this.body.password
     }
   }
