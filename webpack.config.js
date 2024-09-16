@@ -7,7 +7,7 @@ module.exports = {
     'login': './frontend/login.js',
     'register': './frontend/register.js',
     'funcionarios': './frontend/funcionarios.js',
-    'reg-funcionario': './frontend/reg-funcionario.js'
+    'reg-funcionario, edit-funcionarios': './frontend/reg-funcionario.js'
   },
   output: {
     path: path.resolve(__dirname, 'public', 'assets', 'js'),

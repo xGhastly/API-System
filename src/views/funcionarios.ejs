@@ -27,8 +27,8 @@
                             <label for="time">Horário</label>
                             <input type="time" id="time" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary">Registrar Chegada</button>
-                        <button type="submit" class="btn btn-danger">Registrar Saída</button>
+                        <button type="submit" class="btn btn-success mx-2">Registrar Chegada</button>
+                        <button type="submit" class="btn btn-danger mx-2">Registrar Saída</button>
                     </form>
                 </div>
             </div>
@@ -38,11 +38,11 @@
     <!-- Botões de Acesso -->
     <div class="row mt-4">
         <div class="col-12 text-center">
-            <a href="/funcionarios/registrar" class="btn btn-secondary mx-2">Registrar Funcionários</a>
-            <a href="/lista-funcionarios" class="btn btn-secondary mx-2">Lista de Funcionários</a>
+            <a href="/funcionarios/registrar" class="btn btn-primary mx-2 flex-grow-1">Registrar Funcionários</a>
+            <a href="/funcionarios/lista" class="btn btn-primary mx-2 flex-grow-1">Lista de Funcionários</a>
         </div>
     </div>
 </main>
-<script rel="stylesheet" src="./assets/js/funcionarios.bundle.js"></script>
+<script rel="stylesheet" src="/assets/js/funcionarios.bundle.js"></script>
 
 <%- include('includes/footer'); %>

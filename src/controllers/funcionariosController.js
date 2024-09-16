@@ -30,4 +30,8 @@ exports.send = async (req,res) => {
     }
 };
 
+exports.lista = (req,res) => {
+    res.render('lista-funcionarios')
+}
+
   
