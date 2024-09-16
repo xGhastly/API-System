@@ -66,7 +66,7 @@ body {
 
 /* Estilo dos botões */
 .edit-btn,
-.time-btn {
+.del-btn {
     padding: 10px 20px;
     font-size: 0.875rem;
     border: none;
@@ -84,14 +84,14 @@ body {
 
 .edit-btn:hover {
     background-color: #45a049;
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-.time-btn {
-    background-color: #2196F3;
+.del-btn {
+    background-color: #f32121;
 }
 
-.time-btn:hover {
-    background-color: #1e87e5;
-    transform: scale(1.05);
+.del-btn:hover {
+    background-color: #e51e1e;
+    transform: scale(1.03);
 }

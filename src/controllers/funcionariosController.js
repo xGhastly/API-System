@@ -22,7 +22,7 @@ exports.send = async (req,res) => {
     }
     req.flash('success', 'Funcionario cadastrado com sucesso!');
     req.session.save(function () {
-        res.redirect(req.get("Referrer") || "/funcionarios/registrar");
+        res.redirect(req.get("Referrer") || "/funcionarios");
 });
     } catch(e) {
         console.log(e)
@@ -30,8 +30,5 @@ exports.send = async (req,res) => {
     }
 };
 
-exports.lista = (req,res) => {
-    res.render('lista-funcionarios')
-}
 
   
