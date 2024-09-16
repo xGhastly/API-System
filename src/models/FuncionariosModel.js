@@ -84,3 +84,4 @@ class Funcionarios {
 }
 
 module.exports = Funcionarios;
+module.exports.FuncionariosModel = FuncionariosModel
