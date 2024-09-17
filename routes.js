@@ -22,7 +22,11 @@ route.post('/register/send', registerController.register);
 // Rotas de Funcionarios
 route.get('/funcionarios', loginRequired, funcionariosController.index)
 route.get('/funcionarios/registrar', loginRequired, funcionariosController.registrar)
-route.post('/funcionarios/registrar/send', funcionariosController.send)
+route.get('/funcionarios/registrar/:id', loginRequired, funcionariosController.editIndex)
+route.post('/funcionarios/registrar/edit/:id', loginRequired, funcionariosController.edit)
+route.post('/funcionarios/registrar/send', loginRequired, funcionariosController.send)
+route.get('/funcionarios/registrar/delete/:id', loginRequired, funcionariosController.delete)
+
 
 
 module.exports = route;

@@ -7,8 +7,13 @@
 <main class="container mt-5">
     <div class="row">
         <div class="col-12 text-center mb-5">
-            <h1>Registrar Novo Funcionário</h1>
-            <p>Preencha o formulário abaixo para adicionar um novo funcionário ao sistema.</p>
+            <% if(funcionario._id) { %>
+                    <h1>Editar Funcionário</h1>
+                    <p>Preencha o formulário abaixo para editar um funcionário no sistema.</p>
+                <% } else { %>
+                    <h1>Registrar Novo Funcionário</h1>
+                    <p>Preencha o formulário abaixo para adicionar um novo funcionário ao sistema.</p>
+                <% } %>
         </div>
     </div>
     <%- include('includes/messages'); %>
@@ -18,33 +23,43 @@
         <div class="col-md-8 offset-md-2">
             <div class="card shadow-lg">
                 <div class="card-body">
-                    <form action="/funcionarios/registrar/send" method="POST">
+
+                    <% if(funcionario._id) { %>
+                    <form action="/funcionarios/registrar/edit/<%= funcionario._id %>" method="POST">
+                    <% } else { %>
+                        <form action="/funcionarios/registrar/send" method="POST">
+                    <% } %>
                         <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                         <div class="form-group">
                             <label for="name">Nome Completo</label>
-                            <input type="text" id="name" name="nome" class="form-control" >
+                            <input value="<%= funcionario.nome %>" type="text" id="name" name="nome" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label for="age">Idade</label>
-                            <input type="number" id="age" name="idade" class="form-control" >
+                            <input value="<%= funcionario.idade %>" type="number" id="age" name="idade" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" id="email" name="email" class="form-control" >
+                            <input value="<%= funcionario.email %>" type="text" id="email" name="email" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label for="phone">Telefone</label>
-                            <input type="number" id="phone" name="telefone" class="form-control">
+                            <input value="<%= funcionario.telefone %>" type="number" id="phone" name="telefone" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="company">Empresa</label>
-                            <input type="text" id="company" name="empresa" class="form-control" >
+                            <input value="<%= funcionario.empresa %>" type="text" id="company" name="empresa" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label for="position">Cargo</label>
-                            <input type="text" id="position" name="cargo" class="form-control" >
+                            <input value="<%= funcionario.cargo %>" type="text" id="position" name="cargo" class="form-control" >
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">Registrar Funcionário</button>
+                        <% if(funcionario._id) { %>
+                            <button type="submit" class="btn btn-primary mr-2">Editar Funcionário</button>
+                        <% } else { %>
+                            <button type="submit" class="btn btn-primary mr-2">Registrar Funcionário</button>
+                        <% } %>
+                        
                         <button type="button" id="redirect-button" class="btn btn-danger">Voltar</button>
                     </form>
                 </div>
