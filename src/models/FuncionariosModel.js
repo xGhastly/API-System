@@ -71,14 +71,11 @@ class Funcionarios {
   }
 
   formatData() {
-    // Formata os dados para padrão
     this.body.nome = this.body.nome.trim().toUpperCase();
     this.body.email = this.body.email.trim().toLowerCase();
     this.body.telefone = this.body.telefone.replace(/\s+/g, '');
     this.body.empresa = this.body.empresa.trim().toUpperCase();
     this.body.cargo = this.body.cargo.trim().toUpperCase();
-
-    // Assegura que a idade é um número
     this.body.idade = parseInt(this.body.idade, 10);
   }
 

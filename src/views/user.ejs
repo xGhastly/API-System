@@ -15,7 +15,7 @@
     <!-- Botões de Acesso -->
     <div class="row mt-2">
         <div class="col-12 text-center">
-            <a href="/funcionarios/registrar" class="btn btn-primary mx-2 flex-grow-1">Aprovar Usuários</a>
+            <a href="/user/aprove" class="btn btn-primary mx-2 flex-grow-1">Aprovar Usuários</a>
         </div>
     </div>
     <div class="container">
@@ -37,11 +37,11 @@
                         <td><%= usuario.user %></td>
                         <td><%= usuario.email %></td>
                         <td><%= usuario.role %></td>
-                        <td class="icons-text"><a href=""><i class="fas fa-edit"></i></a></td>
-                        <td class="icons-text"><a class="text-danger" href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>                      
+                        <td class="icons-text"><a href="/user/edit/<%= usuario._id%>"><i class="fas fa-edit"></i></a></td>
+                        <td class="icons-text"><a class="text-danger" href="/user/delete/<%= usuario._id%>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>                      
                         
                     </tr>
-                <% }); %>
+                <% }); %> 
                 <!-- Mais funcionários -->
             </tbody>
         </table>

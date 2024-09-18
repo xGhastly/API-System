@@ -18,7 +18,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Estacionamento</a>
             </li>
-            <% if(user.role == 'admin') { %>
+            <% if(user && user.role == 'admin') { %>
                 <li class="nav-item"></li>
                     <a class="nav-link" href="/user">Gerenciar Usuários</a>
                 </li>
@@ -36,6 +36,9 @@
             <% } %>
 
             <% if(user) { %>
+            <li class="nav-item"></li>
+                <a class="nav-link" href="/profile"><i class="fa-solid fa-user"></i> <%= user.user %></a>
+            </li>   
             <li class="nav-item"></li>
                 <a class="nav-link" href="/login/logout">Sair</a>
             </li>

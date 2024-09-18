@@ -30,5 +30,8 @@ route.get('/funcionarios/registrar/delete/:id', loginRequired, requireRoleManage
 
 // Rotas de User
 route.get('/user', loginRequired, requireRoleAdmin, userController.index)
+route.get('/user/edit/:id', loginRequired, requireRoleAdmin, userController.editIndex)
+route.post('/user/edit/:id', loginRequired, requireRoleAdmin, userController.edit)
+route.get('/user/delete/:id', loginRequired, requireRoleAdmin, userController.index)
 
 module.exports = route;

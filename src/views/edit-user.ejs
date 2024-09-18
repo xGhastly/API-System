@@ -1,0 +1,54 @@
+<%- include('includes/head'); %>
+
+<!-- Cabeçalho -->
+<%- include('includes/nav'); %>
+
+<!-- Conteúdo Principal -->
+<main class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <% if(usuario._id) { %>
+                    <h1>Editar Funcionário</h1>
+                    <p>Preencha o formulário abaixo para editar um funcionário no sistema.</p>
+                <% } else { %>
+                    <h1>Registrar Novo Funcionário</h1>
+                    <p>Preencha o formulário abaixo para adicionar um novo funcionário ao sistema.</p>
+                <% } %>
+        </div>
+    </div>
+    <%- include('includes/messages'); %>
+
+    <!-- Formulário de Registro -->
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <form action="/user/edit/<%= usuario._id %>" method="POST">
+                        <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                        <div class="form-group">
+                            <label for="user">User</label>
+                            <input value="<%= usuario.user %>" type="text" id="user" name="user" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input value="<%= usuario.email %>" type="string" id="email" name="email" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <select id="role" name="role" class="form-control">
+                                <option value="user" <% if (usuario.role === 'user') { %>selected<% } %>>user</option>
+                                <option value="manager" <% if (usuario.role === 'manager') { %>selected<% } %>>manager</option>
+                            </select>
+                        </div>
+                            <button type="submit" class="btn btn-primary mr-2">Editar Usuário</button>
+                                         
+                        <button type="button" id="redirect-button" class="btn btn-danger">Voltar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script rel="stylesheet" src="/assets/js/funcionarios.bundle.js"></script>
+<script src="/assets/js/edit-user.js"></script>
+<%- include('includes/footer'); %>

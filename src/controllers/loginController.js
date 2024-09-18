@@ -1,7 +1,7 @@
 const Login = require('../models/LoginModel')
 
 exports.index = (req, res) => {
-    res.render('login')
+    res.render('login' )
 }
 
 exports.login = async (req, res) => {
