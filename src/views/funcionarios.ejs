@@ -13,12 +13,13 @@
     </div>
     <%- include('includes/messages'); %>
     <!-- Botões de Acesso -->
+    <% if(user.role === 'admin') { %>
     <div class="row mt-2">
         <div class="col-12 text-center">
             <a href="/funcionarios/registrar" class="btn btn-primary mx-2 flex-grow-1">Registrar Funcionários</a>
         </div>
     </div>
-
+    <% } %>
     <div class="container">
         <h1 class="my-5">Lista de Funcionários</h1>
         <table class="employee-table">
@@ -30,8 +31,8 @@
                     <th>Telefone</th>
                     <th>Empresa</th>
                     <th>Cargo</th>
-                    <th>Ações</th>
-                    <th></th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,8 +45,8 @@
                         <td><%= funcionario.telefone %></td>
                         <td><%= funcionario.empresa %></td>
                         <td><%= funcionario.cargo %></td>
-                        <td><a href="/funcionarios/registrar/<%= funcionario._id%>">Editar</a></td>
-                        <td><a class="text-danger" href="/funcionarios/registrar/delete/<%= funcionario._id%>">Excluir</a></td>
+                        <td class="icons-text"><a href="/funcionarios/registrar/<%= funcionario._id%>"><i class="fas fa-edit"></i></a></td>
+                        <td class="icons-text"><a class="text-danger" href="/funcionarios/registrar/delete/<%= funcionario._id%>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                         
                     </tr>
                 <% }); %>

@@ -30,3 +30,21 @@ exports.loginRequired = (req, res, next) => {
 
   next()
 }
+
+exports.requireRoleAdmin = (req,res,next) => {
+  if (!req.session.user.role == 'admin') {
+    req.flash('errors', 'Você não tem permissão para acessar esta página');
+    req.session.save(() => res.redirect('back'));
+    return
+  }
+  next()
+}
+
+exports.requireRoleManager = (req,res,next) => {
+  if (!req.session.user.role == 'manager' || !req.session.user.role == 'admin') {
+    req.flash('errors', 'Você não tem permissão para acessar esta página');
+    req.session.save(() => res.redirect('back'));
+    return
+  }
+  next()
+}

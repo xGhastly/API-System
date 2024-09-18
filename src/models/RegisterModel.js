@@ -1,15 +1,17 @@
 const mongoose = require('mongoose');
 const validator = require('validator')
 const bcryptjs = require('bcryptjs')
+require('dotenv').config();
 
 const RegisterSchema = new mongoose.Schema({
   user: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  
+  criadoEm: {type: Date, default: Date.now},
+  role: {type: String, enum: ['admin', 'user', 'manager'], default: 'user'}
 });
 
-const RegisterModel = mongoose.model('Register', RegisterSchema);
+const RegisterModel = mongoose.model('Usuários', RegisterSchema);
 
 
 class Register {
@@ -40,6 +42,38 @@ class Register {
     const user = await RegisterModel.findOne({ user: this.body.user })
     if (email) this.errors.push('Email já cadastrado.')
     if(user) this.errors.push('Usuário já cadastrado.')
+  }
+
+  static async buscaUsuario() {
+    const usuario = await RegisterModel.find()
+      .sort({criadoEm: -1})
+    return usuario
+  }
+
+  static async createDefaultAdmin() {
+    try {
+      // Verifica se já existe um administrador no banco de dados
+      const admin = await RegisterModel.findOne({ role: 'admin' });
+      const adminPassword = process.env.ADMIN_PASSWORD
+      const adminEmail = process.env.ADMIN_EMAIL
+      
+      if (!admin) {
+        // Se não existir, cria um novo administrador padrão
+        const hashedPassword = await bcryptjs.hash(adminPassword, 10); // Define uma senha padrão (ex: 'admin123')
+  
+        const newAdmin = await RegisterModel.create( {
+          user: 'admin',
+          email: adminEmail,
+          password: hashedPassword,
+          role: 'admin'
+        })
+        console.log('Administrador padrão criado com sucesso.');
+      } else {
+        console.log('Já existe um administrador no sistema.');
+      }
+    } catch (error) {
+      console.error('Erro ao criar administrador padrão:', error);
+    }
   }
 
   valida() {

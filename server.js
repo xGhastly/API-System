@@ -1,4 +1,5 @@
 require('dotenv').config();
+const Register = require('./src/models/RegisterModel')
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -57,7 +58,8 @@ app.use(routes);
 
 
 
-app.on('pronto', () => {
+app.on('pronto', async () => {
+  await Register.createDefaultAdmin()
   app.listen(3000, () => {
     console.log('Acessar http://localhost:3000');
     console.log('Servidor executando na porta 3000');

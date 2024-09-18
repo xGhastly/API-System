@@ -41,6 +41,10 @@ body {
   font-weight: 600;
 }
 
+.employee-table th.icons-text {
+  text-align: center;
+}
+
 .employee-table tbody tr {
   border-bottom: 1px solid #eee;
 }
@@ -58,6 +62,10 @@ body {
   padding: 15px;
   font-size: 1rem;
   color: #555;
+}
+
+.employee-table td.icons-text {
+  text-align: center;
 }
 
 .employee-table td:first-child {

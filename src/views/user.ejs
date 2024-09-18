@@ -1,0 +1,52 @@
+<%- include('includes/head'); %>
+
+<!-- Cabeçalho -->
+<%- include('includes/nav'); %>
+
+<!-- Conteúdo Principal -->
+<main class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center mb-2">
+            <h1>Lista de Usuários</h1>
+            <p>Utilize a interface abaixo para ter acesso a listagem e controle dos usuários.</p>
+        </div>
+    </div>
+    <%- include('includes/messages'); %>
+    <!-- Botões de Acesso -->
+    <div class="row mt-2">
+        <div class="col-12 text-center">
+            <a href="/funcionarios/registrar" class="btn btn-primary mx-2 flex-grow-1">Aprovar Usuários</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="my-5">Lista de Usuários</h1>
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Rule</th>
+                    <th class="icons-text">Editar</th>
+                    <th class="icons-text">Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui você pode inserir dinamicamente as linhas com as informações dos funcionários -->
+                <% usuario.forEach(usuario => { %>
+                    <tr>
+                        <td><%= usuario.user %></td>
+                        <td><%= usuario.email %></td>
+                        <td><%= usuario.role %></td>
+                        <td class="icons-text"><a href=""><i class="fas fa-edit"></i></a></td>
+                        <td class="icons-text"><a class="text-danger" href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>                      
+                        
+                    </tr>
+                <% }); %>
+                <!-- Mais funcionários -->
+            </tbody>
+        </table>
+    </div>
+</main>
+<script rel="stylesheet" src="/assets/js/funcionarios.bundle.js"></script>
+
+<%- include('includes/footer'); %>
