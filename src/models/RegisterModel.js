@@ -13,7 +13,6 @@ const RegisterSchema = new mongoose.Schema({
 
 const RegisterModel = mongoose.model('Usuários', RegisterSchema);
 
-
 class Register {
   constructor(body) {
     this.body = body;

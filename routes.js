@@ -5,6 +5,7 @@ const loginController = require('./src/controllers/loginController');
 const registerController = require ('./src/controllers/registerController')
 const funcionariosController = require ('./src/controllers/funcionariosController')
 const userController = require ('./src/controllers/userController')
+const perfilController = require ('./src/controllers/perfilController')
 
 const { loginRequired, requireRoleAdmin, requireRoleManager } = require('./src/middlewares/middleware') 
 
@@ -33,5 +34,9 @@ route.get('/user', loginRequired, requireRoleAdmin, userController.index)
 route.get('/user/edit/:id', loginRequired, requireRoleAdmin, userController.editIndex)
 route.post('/user/edit/:id', loginRequired, requireRoleAdmin, userController.edit)
 route.get('/user/delete/:id', loginRequired, requireRoleAdmin, userController.index)
+
+// Rotas do Perfil
+
+route.get('/profile', loginRequired, perfilController.index)
 
 module.exports = route;

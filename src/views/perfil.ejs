@@ -1,0 +1,32 @@
+<%- include('includes/head'); %>
+
+<!-- Cabeçalho -->
+<%- include('includes/nav'); %>
+
+<!-- Conteúdo Principal -->
+<div class="container">
+    <h2>Perfil do Usuário</h2>
+    <div class="profile-info">
+        <div>
+            <span class="label">Usuario:</span>
+            <span class="value"><%= user.user %></span>
+        </div>
+        <div>
+            <span class="label">Data de Criação:</span>
+            <span class="value">
+                <%= criadoEm ? new Date(criadoEm).toLocaleDateString('pt-BR') : 'Data não disponível' %>
+            </span>
+        </div>
+        <div>
+            <span class="label">Email:</span>
+            <span class="value"><%= user.email %></span>
+        </div>
+        <div>
+            <span class="label">Cargo:</span>
+            <span class="value"><%= user.role %></span>
+        </div>
+    </div>
+</div>
+<script rel="stylesheet" src="/assets/js/perfil.bundle.js"></script>
+
+<%- include('includes/footer'); %>
